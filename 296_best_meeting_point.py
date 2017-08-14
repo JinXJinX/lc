@@ -1,13 +1,13 @@
-# 57 / 57 test cases passed.
-# Status: Accepted
-# Runtime: 45 ms
-
 #manhattan distance: distance between two points is the sum of the absolute
 #differences of their Cartesian coordinates.
 #therefore, the min-total-distance to all points(2-D) is equal to the min-total-
 #distance to all points(1-D) on x-axis plus the min-total-distance to all
 #points(1-D) on y-axis.
 #in 1-D, the min-total-distance point is the median point
+
+# 57 / 57 test cases passed.
+# Status: Accepted
+# Runtime: 45 ms
 
 class Solution(object):
     def minTotalDistance(self, grid):
