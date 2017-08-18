@@ -1,6 +1,9 @@
 # 68 / 68 test cases passed.
 # Status: Accepted
 # Runtime: 42 ms
+
+# since 'i in set' and 'set.remove(x)' takes avg o(1) time.
+# thie solution is O(n) time complexity
 class Solution(object):
     def longestConsecutive(self, nums):
         """
