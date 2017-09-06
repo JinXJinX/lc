@@ -2,7 +2,7 @@ from tool import testtime, randomlist, issorted
 
 '''
 time complexity: Ω(nlogn); Θ(nlogn); O(n^2)
-space complexity: O(logn)
+space complexity: O(1)
 
 quicksort performs bad when every pivot is the max/min in current range.
 
