@@ -1,6 +1,9 @@
-from tool import testtime
+from tool import testtime, randomlist, issorted
 
-
+'''
+time complexity: Ω(nlogn); Θ(nlogn); O(nlogn)
+space complexity: O(n)
+'''
 @testtime
 def mergesort(lst):
     _helper(lst, 0, len(lst))
@@ -36,3 +39,9 @@ def _merge(lst, start, mid, end):
             break
     lst[start:end] = tmp[:]
     return
+
+if __name__ == '__main__':
+    size = 10
+    lst = randomlist(size, duplicate=False)
+    mergesort(lst)
+    print(issorted(lst))
