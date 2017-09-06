@@ -1,5 +1,6 @@
 from tool import issorted, randomlist
 from mergesort import mergesort
+from quicksort import quicksort
 
 
 def testSort(func, lst1, lst2, name):
@@ -33,10 +34,14 @@ def testSort(func, lst1, lst2, name):
 
 
 if __name__ == '__main__':
-    size = 15000
+    size = 5000
     lst1 = randomlist(size, duplicate=True)
     lst2 = randomlist(size, duplicate=False)
 
     tmp1 = lst1[:]
     tmp2 = lst2[:]
     testSort(mergesort, tmp1, tmp2, 'merge sort')
+
+    tmp1 = lst1[:]
+    tmp2 = lst2[:]
+    testSort(quicksort, tmp1, tmp2, 'quick sort')
