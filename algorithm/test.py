@@ -34,7 +34,7 @@ def testSort(func, lst1, lst2, name):
 
 
 if __name__ == '__main__':
-    size = 5000
+    size = 1000
     lst1 = randomlist(size, duplicate=True)
     lst2 = randomlist(size, duplicate=False)
 

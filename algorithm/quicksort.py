@@ -3,20 +3,30 @@ from tool import testtime, randomlist, issorted
 '''
 time complexity: Ω(nlogn); Θ(nlogn); O(n^2)
 space complexity: O(logn)
+
+quicksort performs bad when every pivot is the max/min in current range.
+
+In this implementation, a sorted list will spend a O(n^2) running time,
+if the size of sorted list is greater than 1000, this algorithm is easy to
+reach the maximum recursion depth exceeded in comparison. use iteration indeed
+of recursion, might aviod this run time error.
+
+"RuntimeError: maximum recursion depth exceeded in comparison" is a guard
+against a stack overflow. could use sys.getrecursionlimit() to increase
+limitation.
 '''
-# TODO, update algorithm for handle sorted list
 @testtime
 def quicksort(lst):
-    _helper(lst, 0, len(lst))
+    # handle maximum recursion depth exceeded error
+    try:
+        _helper(lst, 0, len(lst))
+    except RuntimeError as err:
+        print(err)
 
 
 def _helper(lst, lo, hi):
     if lo < hi:
-        try:
-            p = partition(lst, lo, hi)
-        except RuntimeError:
-            print('error', lo, hi)
-            return
+        p = partition(lst, lo, hi)
         _helper(lst, lo, p)
         _helper(lst, p+1, hi)
     return
@@ -35,7 +45,7 @@ def partition(lst, lo, hi):
 
 
 if __name__ == '__main__':
-    size = 500
+    size = 2000
     lst = randomlist(size, duplicate=True)
     quicksort(lst)
     print(issorted(lst))
