@@ -17,7 +17,6 @@ def _helper(lst, start, end):
     _helper(lst, start, mid)
     _helper(lst, mid, end)
     _merge(lst, start, mid, end)
-    return
 
 
 def _merge(lst, start, mid, end):
@@ -38,7 +37,6 @@ def _merge(lst, start, mid, end):
             tmp += lst[left_idx:mid]
             break
     lst[start:end] = tmp[:]
-    return
 
 if __name__ == '__main__':
     size = 10

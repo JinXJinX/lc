@@ -29,7 +29,6 @@ def _helper(lst, lo, hi):
         p = partition(lst, lo, hi)
         _helper(lst, lo, p)
         _helper(lst, p+1, hi)
-    return
 
 
 def partition(lst, lo, hi):

@@ -1,7 +1,13 @@
-from tool import issorted, randomlist
+from tool import issorted, randomlist, testtime
 from mergesort import mergesort
 from quicksort import quicksort
+from insertionsort import insertionsort
+from timsort import timsort
 
+
+@testtime
+def builtinsort(lst):
+    lst.sort()
 
 def testSort(func, lst1, lst2, name):
     print('--{}--'.format(name))
@@ -30,13 +36,15 @@ def testSort(func, lst1, lst2, name):
     if not issorted(lst2):
         print('Not Sorted!!')
 
-    print('----')
-
 
 if __name__ == '__main__':
-    size = 1000
+    size = 500
     lst1 = randomlist(size, duplicate=True)
     lst2 = randomlist(size, duplicate=False)
+
+    tmp1 = lst1[:]
+    tmp2 = lst2[:]
+    testSort(builtinsort, tmp1, tmp2, 'built-in sort')
 
     tmp1 = lst1[:]
     tmp2 = lst2[:]
@@ -45,3 +53,11 @@ if __name__ == '__main__':
     tmp1 = lst1[:]
     tmp2 = lst2[:]
     testSort(quicksort, tmp1, tmp2, 'quick sort')
+
+    tmp1 = lst1[:]
+    tmp2 = lst2[:]
+    testSort(insertionsort, tmp1, tmp2, 'insertion sort')
+
+    tmp1 = lst1[:]
+    tmp2 = lst2[:]
+    testSort(timsort, tmp1, tmp2, 'tim sort')
