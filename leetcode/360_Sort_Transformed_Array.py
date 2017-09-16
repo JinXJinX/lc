@@ -15,3 +15,8 @@ class Solution(object):
         # is special). So, the timsort, gonna takes O(n) time to sort those two sorted
         # list.
         return [n*(a*n+b)+c for n in nums].sort()
+
+        # another way is: since the neg nums, pos nums lists are sorted.
+        # you can use O(n) to reverse the decreasing list. Or, you could
+        # just use two pointers, from the samller side. merge two list.
+        # if 0 in nums, handle it as a special case.
