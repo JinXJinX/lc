@@ -30,6 +30,13 @@ class Solution(object):
         # 77 / 77 test cases passed.
         # Status: Accepted
         # Runtime: 68 ms
+        # the while loop is like a running clock. every event (start time,
+        # end time) is on the 'time line'. check every point time in order.
+        # if its a event start time. check available rooms. if there is a
+        #   available room, then the num of available rooms minus one. if not
+        #   available room then open a new room, number of total rooms plus one.
+        # if its a event end time. add one to the num of available room.
+        # return the number of total rooms
         def minMeetingRooms(self, intervals):
             starts = []
             ends = []
