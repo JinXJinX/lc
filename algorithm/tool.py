@@ -9,7 +9,8 @@ def testtime(func):
         startTime = int(round(time.time() * 1000))
         func(*args, **kwargs)
         endTime = int(round(time.time() * 1000))
-        print(endTime - startTime,'ms')
+        # print(endTime - startTime,'ms')
+        return (endTime - startTime)
     return wrapFunc
 
 

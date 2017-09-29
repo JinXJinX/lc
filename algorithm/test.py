@@ -1,63 +1,44 @@
+import unittest
+
 from tool import issorted, randomlist, testtime
 from mergesort import mergesort
 from quicksort import quicksort
 from insertionsort import insertionsort
 from timsort import timsort
 
-
 @testtime
 def builtinsort(lst):
     lst.sort()
 
-def testSort(func, lst1, lst2, name):
-    print('--{}--'.format(name))
 
-    # unsorted list without duplicate values
-    print('list 1:')
-    func(lst1)
-    if not issorted(lst1):
-        print('Not Sorted!!')
-
-    # unsorted list with duplicate values
-    print('list 2:')
-    func(lst2)
-    if not issorted(lst2):
-        print('Not Sorted!!')
-
-    # sorted list without duplicate values
-    print('list 3(sorted):')
-    func(lst1)
-    if not issorted(lst1):
-        print('Not Sorted!!')
-
-    # sorted list with duplicate values
-    print('list 4(sorted):')
-    func(lst2)
-    if not issorted(lst2):
-        print('Not Sorted!!')
+class TestCase(unittest.TestCase):
+    '''test func '''
+    def testSort(self, func, lst1, lst2, name):
+        print('--%s--' % (name))
+        # unsorted list without duplicate values
+        time1 = func(lst1)
+        self.assertTrue(issorted(lst1))
+        # unsorted list with duplicate values
+        time2 = func(lst2)
+        self.assertTrue(issorted(lst2))
+        # sorted list without duplicate values
+        time3 = func(lst1)
+        self.assertTrue(issorted(lst1))
+        # sorted list with duplicate values
+        time4 = func(lst2)
+        self.assertTrue(issorted(lst2))
+        print('l1: %s ms, l2: %s ms, l1(sorted): %s ms, l2(sorted): %s ms.' % (time1, time2, time3, time4))
 
 
 if __name__ == '__main__':
     size = 500
     lst1 = randomlist(size, duplicate=True)
     lst2 = randomlist(size, duplicate=False)
+    lst3 = [i for i in range(size)]
+    test = TestCase()
 
-    tmp1 = lst1[:]
-    tmp2 = lst2[:]
-    testSort(builtinsort, tmp1, tmp2, 'built-in sort')
-
-    tmp1 = lst1[:]
-    tmp2 = lst2[:]
-    testSort(mergesort, tmp1, tmp2, 'merge sort')
-
-    tmp1 = lst1[:]
-    tmp2 = lst2[:]
-    testSort(quicksort, tmp1, tmp2, 'quick sort')
-
-    tmp1 = lst1[:]
-    tmp2 = lst2[:]
-    testSort(insertionsort, tmp1, tmp2, 'insertion sort')
-
-    tmp1 = lst1[:]
-    tmp2 = lst2[:]
-    testSort(timsort, tmp1, tmp2, 'tim sort')
+    test.testSort(builtinsort, lst1[:], lst2[:], 'built-in sort')
+    test.testSort(mergesort, lst1[:], lst2[:], 'merge sort')
+    test.testSort(quicksort, lst1[:], lst2[:], 'quick sort')
+    test.testSort(insertionsort, lst1[:], lst2[:], 'insertion sort')
+    test.testSort(timsort, lst1[:], lst2[:], 'tim sort')
