@@ -5,6 +5,7 @@ from mergesort import mergesort
 from quicksort import quicksort
 from insertionsort import insertionsort
 from timsort import timsort
+from countingsort import countingsort
 
 @testtime
 def builtinsort(lst):
@@ -42,3 +43,4 @@ if __name__ == '__main__':
     test.testSort(quicksort, lst1[:], lst2[:], 'quick sort')
     test.testSort(insertionsort, lst1[:], lst2[:], 'insertion sort')
     test.testSort(timsort, lst1[:], lst2[:], 'tim sort')
+    test.testSort(countingsort, lst1[:], lst2[:], 'counting sort')
